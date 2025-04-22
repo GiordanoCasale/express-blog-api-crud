@@ -40,7 +40,7 @@ function show(req, res) {
 
         //restituisco un json contenente il messaggio di errore
         res.json({
-            error: "Not Found"
+            error: "Not Found",
             message: "Pizza non trovata"
         })
 
