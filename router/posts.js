@@ -10,37 +10,21 @@ const ricettario = ("../data/ricettario.js")
 
 //importo il controller delle ricette
 const ricetteController = require("../controllers/ricettecontroller.js")
-console.log(ricetteController)
 
 //index
-router.get("/", (req,res) => {
-    res.send("lista delle ricette");
-})
-
+router.get("/", ricetteController.index)
 //show
-router.get("/:id",(req,res) => {
-    res.send("dettaglio della ricetta"+req.params.id);
-})
-
+router.get("/:id", ricetteController.show)
 //store
-router.post("/",(req,res) => {
-    res.send("inserimento nuova ricetta");
-})
-
+router.get("/", ricetteController.store)
 //update
-router.put("/:id",(req,res) => {
-    res.send(`modifica totale della ricetta ${req.params.id}`);
-})
+router.get("/:id", ricetteController.update)
 
 //modify
-router.patch("/:id",(req,res) => {
-    res.send(`modifica parziale della ricetta ${req.params.id}`);
-})
+router.get("/:id", ricetteController.modify)
 
 //destroy
-router.delete("/:id",(req,res) => {
-    res.send(`cancellazione della ricetta ${req.params.id}`);
-})
+router.get("/:id", ricetteController.index)
 
 //esporto il router
 module.exports = router;
