@@ -8,7 +8,7 @@ const router = express.Router();
 const ricettario = ("../data/ricettario.js")
 
 //importo il controller delle ricette
-const 
+const ricetteController = require("../controllers/ricettecontroller.js")
 
 //index
 router.get("/", (req,res) => {
