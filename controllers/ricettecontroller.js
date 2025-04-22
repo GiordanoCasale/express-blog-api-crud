@@ -7,12 +7,12 @@ function index(req, res) {
     const tags = req.query.tags;
 
     //definizione della variabile che contiene il ricettario filtrato e la inizializziamo con il valore contenuto nella variabile ricettario
-    let filteredRicettario = ricettario
+    let filteredRicettario = ricettario;
 
     //controllo che tags abbia un valore definito
     if (tags) {
         //operazioni per il filtraggio
-        filteredRicettario = ricettario.filter((ricetta) => ricetta.ingredients.includes(tags))
+        filteredRicettario = ricettario.filter((ricetta) => ricetta.tags.includes(tags))
     }
 
 
@@ -28,8 +28,6 @@ function show(req, res) {
     //uitlizzo il valore contenuto nella variabile dichiarata ed inizializzata precedentemente per recuperare la pizza
     const ricetta = ricettario.find(ricetta => ricetta.id === id);
 
-    console.log(ricetta)
-
     //verifico che la variabile pizza contenga qualcosa
     if (ricetta === undefined) {
 
@@ -41,7 +39,7 @@ function show(req, res) {
         //restituisco un json contenente il messaggio di errore
         res.json({
             error: "Not Found",
-            message: "Pizza non trovata"
+            message: "Ricetta non trovata"
         })
 
 

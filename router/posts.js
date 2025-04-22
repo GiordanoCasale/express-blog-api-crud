@@ -16,15 +16,15 @@ router.get("/", ricetteController.index)
 //show
 router.get("/:id", ricetteController.show)
 //store
-router.get("/", ricetteController.store)
+router.post("/", ricetteController.store)
 //update
-router.get("/:id", ricetteController.update)
+router.put("/:id", ricetteController.update)
 
 //modify
-router.get("/:id", ricetteController.modify)
+router.patch("/:id", ricetteController.modify)
 
 //destroy
-router.get("/:id", ricetteController.index)
+router.delete("/:id", ricetteController.destroy)
 
 //esporto il router
 module.exports = router;
