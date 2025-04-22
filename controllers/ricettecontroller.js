@@ -98,4 +98,3 @@ function destroy(req, res) {
 
 //vado ad esportare il controller
 module.exports = {index, show, store, update, modify, destroy}
-
