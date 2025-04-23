@@ -69,7 +69,7 @@ function store(req, res) {
 
     //pusho il nuovo oggetto nell'array
     ricettario.push(newPizza);
-console.log(ricettario)
+    console.log(ricettario)
     //restituisco il codice di stato 201
     res.status(201);
     res.json(newPizza);
@@ -78,7 +78,30 @@ console.log(ricettario)
 
 //definizione della funzione update
 function update(req, res) {
-    res.send(`modifica totale della ricetta ${req.params.id}`);
+
+    //recupero il valore passato come parametro dinamico e lo converto in intero
+    const id = parseInt(req.params.id)
+
+    //vado a recuperare l'elemento avente come id quello che abbiamo passato come parametro
+    const ricetta = ricettario.find(ricetta => ricetta.id === id);
+
+    //controllo se esiste la ricetta con quell'id, se NON esiste allora restituisco un messaggio e l'errore 404
+    if (!ricetta) {
+        res.status(404);
+
+        res.json({
+            error: "Not Found",
+            message: "Ricetta non trovata"
+        })
+    }
+
+    //nel caso in cui la ricetta esiste, vado a modificarla
+    ricetta.title = req.body.title,
+        ricetta.content = req.body.content,
+        ricetta.image = req.body.image,
+        ricetta.tags = req.body.tags
+
+    res.json(ricetta);
 }
 
 //definizione della funzione modify
@@ -94,7 +117,7 @@ function destroy(req, res) {
     //vado a recuperare l'elemento avente come id quello che abbiamo passato come parametro
     const ricetta = ricettario.find(ricetta => ricetta.id === id);
 
-    //se pizza contiene qualcosa allora eseguo la cancellazione, altrimenti devo restituire un messaggio
+    //se la ricetta contiene qualcosa allora eseguo la cancellazione, altrimenti devo restituire un messaggio
     if (!ricetta) {
         res.status(404);
 
