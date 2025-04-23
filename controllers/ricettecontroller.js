@@ -55,8 +55,25 @@ function show(req, res) {
 
 //definizione della funzione store
 function store(req, res) {
-    console.log(req.body)
-    res.send("inserimento nuova ricetta");
+    //definizione dell'id dell'elemento da inserire
+    const newId = ricettario[ricettario.length - 1].id + 1
+
+    //creo il nuovo oggetto da inserire nell'array
+    const newPizza = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+
+    //pusho il nuovo oggetto nell'array
+    ricettario.push(newPizza);
+console.log(ricettario)
+    //restituisco il codice di stato 201
+    res.status(201);
+    res.json(newPizza);
+
 }
 
 //definizione della funzione update
@@ -78,7 +95,7 @@ function destroy(req, res) {
     const ricetta = ricettario.find(ricetta => ricetta.id === id);
 
     //se pizza contiene qualcosa allora eseguo la cancellazione, altrimenti devo restituire un messaggio
-    if(!ricetta){
+    if (!ricetta) {
         res.status(404);
 
         res.json({
@@ -98,4 +115,4 @@ function destroy(req, res) {
 }
 
 //vado ad esportare il controller
-module.exports = {index, show, store, update, modify, destroy}
+module.exports = { index, show, store, update, modify, destroy }
