@@ -55,6 +55,7 @@ function show(req, res) {
 
 //definizione della funzione store
 function store(req, res) {
+    console.log(req.body)
     res.send("inserimento nuova ricetta");
 }
 

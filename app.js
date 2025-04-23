@@ -7,6 +7,9 @@ const app = express();
 //definizione del numero di porta
 const port = 3000;
 
+//indico a express di trattare i body delle richieste come json
+app.use(express.json());
+
 //importo il router in una variabile
 const postsRouter = require("./router/posts.js");
 
