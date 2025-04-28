@@ -3,6 +3,7 @@ const express = require("express")
 
 //importo il middleware
 const errorsHandler = require("./middleware/errorsHandler.js");
+const notFound = require("./middleware/notFound.js");
 
 //inizializzo express dentro la variabile app
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 
 //vado a registrare sotto tutte le rotte il middleware
 app.use(errorsHandler);
+app.use(notFound);
 
 //inserimento del metodo che lascia in ascolto il nostro server
 app.listen(port, () => {
