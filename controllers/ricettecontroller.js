@@ -6,6 +6,7 @@ function index(req, res) {
     //filtraggio: uso delle query string
     const tags = req.query.tags;
 
+    
     //definizione della variabile che contiene il ricettario filtrato e la inizializziamo con il valore contenuto nella variabile ricettario
     let filteredRicettario = ricettario;
 

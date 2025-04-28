@@ -1,6 +1,9 @@
 //importazione di express
 const express = require("express")
 
+//importo il middleware
+const errorsHandler = require("./middleware/errorsHandler.js");
+
 //inizializzo express dentro la variabile app
 const app = express();
 
@@ -23,6 +26,9 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.send("I miei post");
 })
+
+//vado a registrare sotto tutte le rotte il middleware
+app.use(errorsHandler);
 
 //inserimento del metodo che lascia in ascolto il nostro server
 app.listen(port, () => {
